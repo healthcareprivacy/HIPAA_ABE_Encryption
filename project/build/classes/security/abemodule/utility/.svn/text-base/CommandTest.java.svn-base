@@ -1,0 +1,89 @@
+package security.abemodule.utility;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+
+public class CommandTest{
+	public CommandTest(){
+		
+	}
+	
+	public  void execute(String[] commands){
+		File wd = new File("/bin");
+		System.out.println(wd);
+		Process proc = null;
+		try {
+			proc = Runtime.getRuntime().exec("/bin/bash", null, wd);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (proc != null) {
+			BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+			PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(proc.getOutputStream())), true);
+			System.out.println("************************");
+			for (String i:commands){
+				System.out.println(i);
+				out.println(i);
+			}
+			System.out.println("************************");
+			//out.println("cd /home/sharps/Desktop/ABE_HIPAA/libfenc-read-only/tools");
+			//out.println("./abe-keygen -m CP -a 'ONE,TWO,THREE,FOUR,FIVE' -o /home/sharps/Desktop/ABE/user2CP.key");
+			out.println("pwd");
+			out.println("exit");
+			try {
+				String line;
+				while ((line = in.readLine()) != null) {		
+					System.out.println(line);
+				}
+				proc.waitFor();
+				in.close();
+				out.close();
+				proc.destroy();
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public  void execute(String command){
+		File wd = new File("/bin");
+		System.out.println(wd);
+		Process proc = null;
+		try {
+			proc = Runtime.getRuntime().exec("/bin/bash", null, wd);
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+		if (proc != null) {
+			BufferedReader in = new BufferedReader(new InputStreamReader(proc.getInputStream()));
+			PrintWriter out = new PrintWriter(new BufferedWriter(new OutputStreamWriter(proc.getOutputStream())), true);
+			out.println(command);
+
+			//out.println("cd /home/sharps/Desktop/ABE_HIPAA/libfenc-read-only/tools");
+			//out.println("./abe-keygen -m CP -a 'ONE,TWO,THREE,FOUR,FIVE' -o /home/sharps/Desktop/ABE/user2CP.key");
+			out.println("pwd");
+			out.println("exit");
+			try {
+				String line;
+				while ((line = in.readLine()) != null) {
+					System.out.println(line);
+				}
+				proc.waitFor();
+				in.close();
+				out.close();
+				proc.destroy();
+			}
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+}

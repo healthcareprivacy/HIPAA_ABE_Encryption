@@ -1,0 +1,35 @@
+Installation Instructions:
+
+These installation instructions assume that you have properly installed the PBC crypto library and the ABE library as well as their dependencies (i.e. GMP). Apache Tomcat has to be installed to run the server.  
+
+Source files and installation instructions for the PBC library can be found at this location: http://crypto.stanford.edu/pbc/
+
+Source files and installation instructions for the ABE library can be found at this location: http://code.google.com/p/libfenc/
+
+Apache Tomcat can be found at the following location: http://tomcat.apache.org/
+-------------------------------------------------------------------------------------------------
+
+The following installation instructions have been tested on a Mac but can easily be ported to a Linux computer in a similar manner. It is important that you have the Eclipse Jave EE Development environment because we use the Eclipse Apache Tomcat Server feature to run the web interface.
+
+After installing the following libraries, open Eclipse and Create a New Java Project.
+
+Then, import the all the files into this new project. A few configuration changes need to be done. All paths included in the variables have to be ABSOLUTE.
+
+1. Right-click the project and go to Properties. Go to Java Build Path -> Libraries. Remove the servlet-api.jar file from the JARs list. Then, click Add External JARs and add the servlet-api.jar file located in your apache-tomcat lib folder. Click OK.
+
+2. Open ProcessInput.java under the server package. Change the variable hipaa_home to the location of the project folder. If you imported the files, this should be /path/to/workspace/(name of folder with src, lib, bin, etc. files)/. It is important to include the final slash.
+
+3. Open DecryptionModule.java under the decryption package. Change the variable locationofABETools to the location of the tools folder for ABE library. At the time of this README, the most recent version of the library is 0.2.0. So, the path should look like /path/to/ABElibrary/tools/. Again, do not forget the last slash.
+
+4. Open EncryptionModule.java under the wrapper package. Change the variable policyStoreFileName to the location of included policy file. This should be something like /path/to/workspace/srcFolderForProject/policy/HIPAAPolicyJava.ser. 
+
+Then change the variable of locationofABETools to the same path you specified in 3. 
+
+In order to run the web interface, make sure that the apache tomcat is set up as a server in the run configurations. This can be found in preferences or just by right clicking on a jsp file in WebContent. 
+
+To run the main demo, go to Web-Content and right-click on messageDemoEncrypt.jsp -> Run As -> Run on Server.
+
+This is research/prototype code, so there are no guarantees about quality, performance, compatibility, or functionality.
+
+If you have any questions about the code, installation troubles, or find any bugs, feel free to contact Frank Wang at (frankw at cs dot stanford dot edu), and I'll see if I can help you out. If you have any questions about the secure healthcare information exchange project in general, please contact Peifung E. Lam at (pflam at cs dot stanford dot edu). We thank Nipun Dave and Divye Raj Khilnani for coding earlier libraries for this project.
+

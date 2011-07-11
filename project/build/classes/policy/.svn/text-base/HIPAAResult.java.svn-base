@@ -1,0 +1,37 @@
+/**
+ * 
+ */
+package policy;
+
+import java.io.Serializable;
+import java.util.HashMap;
+
+/**
+ * @author Nipun Dave
+ *
+ */
+public final class HIPAAResult extends Result<String, String> implements Serializable{
+	private static final long serialVersionUID = 1L;
+
+	public HIPAAResult(){
+		result = new HashMap<String, String>(3);
+		query = new HIPAAQuery();
+		result.put("receiver", new String());
+		result.put("belief", new String());
+		result.put("consent", new String());
+	}
+	
+	public HIPAAResult(HIPAAQuery q, String receiver, String belief, String consent){
+		result = new HashMap<String, String> (3);
+		query = q;
+		result.put("receiver", receiver);
+		result.put("belief", belief);
+		result.put("consent", consent);
+	}
+	
+	public String toString(){
+		return 	"R = " + result.get("receiver").toString() + 
+				", C = "+ result.get("consent").toString() + 
+				", B = "+ result.get("belief").toString() + "\n";
+	}
+}

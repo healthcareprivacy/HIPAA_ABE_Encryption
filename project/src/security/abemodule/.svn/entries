@@ -1,0 +1,50 @@
+10
+
+dir
+10
+file:///home/sharps/Desktop/svn/hipaa/src/security/abemodule
+file:///home/sharps/Desktop/svn
+
+
+
+2011-04-14T18:47:32.068000Z
+10
+Nipun Dave
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e69cd45c-a3ac-442f-8aaf-7810c859bf93
+
+
+
+
+
+
+0
+
+accesscontrol
+dir
+
+documentencryptiondecryption
+dir
+
+encryption
+dir
+
+keygeneration
+dir
+
+utility
+dir
+

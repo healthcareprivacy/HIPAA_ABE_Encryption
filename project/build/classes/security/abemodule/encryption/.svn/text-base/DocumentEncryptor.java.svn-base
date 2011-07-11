@@ -1,0 +1,47 @@
+package security.abemodule.encryption;
+
+import security.abemodule.keygeneration.KeyGenerator;
+import security.abemodule.utility.CommandExecutor;
+
+
+//Example Command for Document Encryption
+//cpabe-enc pub_key security_report.pdf
+//(sysadmin and (hire_date < 946702800 or security_team)) or
+//(business_staff and 2 of (executive_level >= 5, audit_group, strategy_team))
+
+public class DocumentEncryptor {
+
+	CommandExecutor commandexecutor;
+	String keydirpath;
+	String documentPath;
+	String documentName;
+
+	public DocumentEncryptor(String keydirpath, String documentName, String documentPath){
+		commandexecutor = new CommandExecutor();
+		this.keydirpath = keydirpath;
+		this.documentName = documentName;
+		this.documentPath = documentPath;
+	}
+
+	public void gotokeydir(){
+		commandexecutor.setCommand("cd "+keydirpath);
+		commandexecutor.executeCommand();
+	}
+
+	public void encryptDocument(String attributes, String encrypteddocname){
+		String fulldocumentPath = documentPath + "/"+documentName; 
+		String encDocPath = documentPath + "/"+encrypteddocname; 
+		attributes = "\""+attributes+"\"";
+		String encryptcommand =  "./abe-enc -m CP -i "+ fulldocumentPath +" -p "+attributes +" -o "+encDocPath;
+		String[] commands = new String[]{"cd "+keydirpath,encryptcommand};        
+		commandexecutor.setCommand(commands);
+		commandexecutor.executeCommand();
+	}
+
+	public static void main(String args[]){
+		String attributes = "((icu or heart) and discharge)" ;
+		DocumentEncryptor documentencryptor = new DocumentEncryptor("/home/sharps/Desktop/ABE_HIPAA/libfenc-read-only/tools", "test", "/home/sharps/Desktop/ABE");	
+		documentencryptor.gotokeydir();
+		documentencryptor.encryptDocument(attributes, "enctest");
+	}
+}

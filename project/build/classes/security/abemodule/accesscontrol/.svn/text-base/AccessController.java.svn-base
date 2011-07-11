@@ -1,0 +1,47 @@
+package security.abemodule.accesscontrol;
+
+import security.abemodule.utility.CommandExecutor;
+
+//Example command for document access
+//cpabe-dec pub_key kevin_priv_key security_report.pdf.cpabe
+
+public class AccessController {
+	String documentName;
+	String entityKey;
+	CommandExecutor commandexecutor;
+	String []commands;
+	String keydirpath;
+	
+	public AccessController(String documentName, String entityKey, String keydirpath){
+		this.documentName = documentName;
+		this.entityKey = entityKey;
+		this.keydirpath = keydirpath;
+		String decryptcommand = "./abe-dec -m CP -k "+this.entityKey+" -f "+this.documentName;
+		commandexecutor = new CommandExecutor();
+		commands = new String[]{"cd "+keydirpath,decryptcommand};        	
+	}
+	
+	public void gotokeydir(){
+		commandexecutor.setCommand("cd "+keydirpath);
+		commandexecutor.executeCommand();
+	}
+	
+	public void accessDocument(){
+		commandexecutor.setCommand(commands);
+		commandexecutor.executeCommand();
+	}
+	
+	public void setDocumentName(String documentName){
+		this.documentName = documentName;
+	}
+	
+	public void setEntityKey(String entityKey){
+		this.entityKey = entityKey;
+	}
+	
+	public static void main(String args[]){
+		AccessController accesscontroller = new AccessController("/home/sharps/Desktop/ABE/enctest.cpabe", "/home/sharps/Desktop/ABE/nurse_privCP.key","/home/sharps/Desktop/ABE_HIPAA/libfenc-read-only/tools");
+		accesscontroller.accessDocument();
+	}
+	
+}

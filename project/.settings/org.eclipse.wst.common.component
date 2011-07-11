@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="HIPAA_ABE_Encryption">
+        <wb-resource deploy-path="/" source-path="/WebContent"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="HIPAA_ABE_Encryption"/>
+        <property name="java-output-path" value="/HIPAA_ABE_Encryption/build/classes"/>
+    </wb-module>
+</project-modules>

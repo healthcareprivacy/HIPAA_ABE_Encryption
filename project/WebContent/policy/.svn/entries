@@ -1,0 +1,131 @@
+10
+
+dir
+4
+file:///home/sharps/Desktop/svn/ABEPolicyGeneration/src/policy
+file:///home/sharps/Desktop/svn
+
+
+
+2011-04-01T01:50:36.771000Z
+4
+Nipun Dave
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+e69cd45c-a3ac-442f-8aaf-7810c859bf93
+
+
+
+
+
+
+0
+
+HIPAAQuery.java
+file
+7
+
+
+delete
+
+9a185c0c9048655867c1db5478abebad
+2011-04-06T21:55:50.013000Z
+7
+Nipun Dave
+
+HIPAAResult.java
+file
+7
+
+
+delete
+
+e82cfed96f2fd2ac0666970f1a0b9d9c
+2011-04-06T21:55:50.013000Z
+7
+Nipun Dave
+
+Policy.java
+file
+7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+deleted
+
+PolicyField.java
+file
+7
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+deleted
+
+Query.java
+file
+7
+
+
+delete
+
+efd742a49e451287c262f153c6bb09f7
+2011-04-06T21:55:50.013000Z
+7
+Nipun Dave
+
+Result.java
+file
+7
+
+
+delete
+
+db1fb3b8c09252276e37507e2a5260f6
+2011-04-06T21:55:50.013000Z
+7
+Nipun Dave
+
